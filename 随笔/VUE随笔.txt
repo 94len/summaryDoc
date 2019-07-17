@@ -1,0 +1,12 @@
+为已有对象新建多个属性：
+	vm.userObject=Object.assign({},vm.userObject,{age:27,favoriteColor:'VueGreen'})
+	
+v-for的优先级比v-if的高，这意味着v-if将分别重复运行于每个v-for循环中，当想为仅有的一些个项渲染节点时	
+	
+$event -- 原始的DOM对象
+
+v-bind:value="option.value" -- 将数据绑定到标签的value属性上
+
+v-model="paramName": 将标签的value值和data中名为paramName的属性绑定，当标签的值改变的时候，paramName的
+	
+<template></template>

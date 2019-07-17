@@ -1,0 +1,38 @@
+layer.alert('墨绿风格，点击确认看深蓝', {
+    skin: 'layui-layer-molv' //样式类名  自定义样式
+    ,closeBtn: 1    // 是否显示关闭按钮
+    ,anim: 1 //动画类型
+    ,btn: ['重要','奇葩'] //按钮
+    ,icon: 6    // icon
+    ,yes:function(){
+        layer.msg('按钮1')
+    }
+    ,btn2:function(){
+        layer.msg('按钮2')
+    }});
+layer.confirm（param1,param12,param13,param14）
+layer.msg("")
+layer.msg("you are the best!",{icon:"&#xe650"});
+layer.msg('大部分参数都是可以公用的<br>合理搭配，展示不一样的风格', {
+     time: 2000, //2s后自动关闭
+    btn: ['明白了', '知道了', '哦']
+ });
+
+layer.tips('Hi，我是tips', '#mybtn');//当成一个function用
+layer.load(1);
+layer.load(0);
+var index = layer.load(0, {shade: false});  //显示加载图标
+var index = layer.load(1, {shade: [0.1,'#fff'] //0.1透明度的白色背景}); //显示加载图标
+layer.open();弹出层
+
+	layer.open(){
+		type: 1,//1为页面层
+		title："标题",// - 标题
+		content: "html代码或页面路径",//- 内容
+		area: ['500px', '300px'],//宽高
+		maxmin:true,//最大化最小化
+		cancel:function(){ //右上角关闭按钮触发的回调
+				return false;//false表示不关闭
+			}
+	}
+	

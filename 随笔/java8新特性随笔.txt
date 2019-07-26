@@ -1,0 +1,58 @@
+【java8新特性】
+
+Instant：瞬时实例。
+LocalDate：本地日期，不包含具体时间 例如：2014-01-14 可以用来记录生日、纪念日、加盟日等。
+LocalTime：本地时间，不包含日期。
+LocalDateTime：组合了日期和时间，但不包含时差和时区信息。
+ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威治的时差。
+
+1、日期类和时间类
+	1) 获取当前时间：LocalDateTime.now()；
+	2) 日期格式化:：LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a"))
+	3) 获取时间戳：Instant.now()
+		（Date.from(Instant) 将Instant转换成java.util.Date，Date.toInstant()则是将Date类转换成Instant类。）
+	4) LocalDateTime转String: LocalDateTime.parse(str,dateTimeFormatter); String转LocalDateTime: localDateTime.format(dateTimeFormatter);
+	5) Date转LocalDateTime：LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
+	6) LocalDateTime转Date：Date date = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())
+	7) 前端传过来的日期字符串怎么转换并放到数据库
+	
+	1)
+		LocalDate localDate = LocalDate.now();
+        System.out.println("LocalDate.now():"+localDate);
+        System.out.println("localDate.getYear():"+localDate.getYear());
+        System.out.println("localDate.getMonth():"+localDate.getMonth());
+        System.out.println("localDate.getMonthValue():"+localDate.getMonthValue());
+        System.out.println("localDate.getDayOfMonth():"+localDate.getDayOfMonth());
+        System.out.println("localDate.getDayOfWeek():"+localDate.getDayOfWeek());
+        System.out.println("localDate.getDayOfWeek().getValue():"+localDate.getDayOfWeek().getValue());
+
+        LocalTime localTime = LocalTime.now();
+        System.out.println("当前时间LocalTime.now(): " + localTime);
+        System.out.println("当前时间+1小时 localTime.plusHours(1): " + localTime.plusHours(1));
+
+        Clock clock = Clock.systemUTC();
+        Clock clock2 = Clock.systemDefaultZone();
+        System.out.println("Clock : " + clock.millis());
+        System.out.println("clock2 : " + clock2.millis());
+        System.out.println("=== 获取当前的时间戳 ===============================================");
+        Instant timestamp = Instant.now();
+        System.out.println("获取当前的时间戳: "+timestamp);
+        System.out.println("=== 格式化日期 ===============================================");
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a");
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(" LocalDateTime.now(): "+localDateTime);
+        System.out.println(" 格式化后的日期："+localDateTime.format(format));
+
+        System.out.println("=== 检查生日等周期性事件 ===============================================");
+        LocalDate dateOfBirth = LocalDate.of(2019, 7, 25);
+        MonthDay birthday = MonthDay.of(dateOfBirth.getMonth(), dateOfBirth.getDayOfMonth());
+        MonthDay currentMonthDay = MonthDay.from(localDate);
+
+        if(currentMonthDay.equals(birthday)){
+            System.out.println(" Many Many happy returns of the day !!");
+        }else{
+            System.out.println(" Sorry, today is not your birthday");
+        }
+		
+		
+	

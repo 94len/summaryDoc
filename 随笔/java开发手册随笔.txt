@@ -1,0 +1,6 @@
+所有整型包装类型（Integer、Long、Short）用equals方法比较
+
+浮点数之间的等值判断：使用BigDecimal定义值，再用equals方法判断
+
+集合转数组，不要用toArray()无参方法，因为只会返回一个Object[],应该用list.toArray(new String[0]);
+

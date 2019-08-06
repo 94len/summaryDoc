@@ -9,6 +9,9 @@ ctrl+T	打开实现类或者实现方法，焦点放到类或者方法上，按c
 ctrl+tab	切换不同的文件窗口
 
 
+** 微课堂后台 ***********************************************************************************************
+分转元：BeclUtil.getMoneyStr(cou.getVipPrice());BeclUtil.changeMapMoneyStr(m, false, "total_out");
+元转分：MoneyUtils.yunStrToFen(price)
 
 
 

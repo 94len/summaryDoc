@@ -1,0 +1,63 @@
+** 微课堂后台 ***********************************************************************************************
+分转元：BeclUtil.getMoneyStr(cou.getVipPrice());BeclUtil.changeMapMoneyStr(m, false, "total_out");
+元转分：MoneyUtils.yunStrToFen(price)
+
+后台获取当前登录的用户：
+		if (nowLoginCustomer == null || nowLoginCustomer.isEmpty()) {
+			return Config.NO_LOGIN;
+		} 
+		Customer loginAccount = CustomerApi.getCustomerInfoById(nowLoginCustomer.getCustomerId());
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+** 问题 ***********************************************************************************************		
+1、后台无法接收前端传输过来的数据：
+	paging = c.request.getParameter("paging");
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

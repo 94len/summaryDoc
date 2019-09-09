@@ -8,8 +8,68 @@
 		} 
 		Customer loginAccount = CustomerApi.getCustomerInfoById(nowLoginCustomer.getCustomerId());
 		
-		
-		
+** t图片上传 ***********************************************************************************************	
+【导入文件】	
+	<!-- OSS文件上传 -->
+	<script src="http://gosspublic.alicdn.com/aliyun-oss-sdk-4.4.4.min.js"></script>
+	<script src="/manager_assets/manager/script/file.js"></script>
+	<script src="/manager_assets/manager/script/Config.js"></script>
+	<script src="/manager_assets/manager/script/manager.js"></script>
+【HTML】
+<div class="layui-upload-list">
+			    <img class="layui-upload-img" style="border:2px solid #000;max-width:180px;" id="workimg" src="/manager_assets/manager/image/logo.png" onclick="enlarge(this)">
+			    <input style="display: none;" type="file" id="file" onchange="upload(this,1,1)">
+			    <input id="workImgSrc" type="hidden" />
+			  </div>
+			  
+			  
+【JS】		  
+//上传图片预览函数实现
+function preViewImg(t) {
+	var input = $(t);
+	var img = $(t).parent().find("img")[0];
+	file.preview(img, input)
+}
+function upload(t, file_type) {
+	var container = $(t).closest("div");
+	var f = t.files[0];
+	var type = f.type;
+	type = type.substring(0, type.indexOf("/"));
+	if (type != "png" && type != "jpg" && type != "image") {
+		layer.alert('请上传格式为png或jpg的图片', {
+			icon: 7
+		});
+		return;
+	}
+	switch (type) {
+		case 'image':
+			preViewImg(t);
+			type = "png";
+			break;
+		case 'video':
+			type = "mp4";
+			break;
+	}
+
+
+	var input = container.find("input[type='hidden']");
+	var name = m.getFilePath($(input).attr("name"), type);
+	$(input).attr("value", name);
+	var file_url = "";
+	var voice_time;
+	var ind = m.layer.loading();
+	file.uploadToOss(container,
+		function(resp) {
+			//console.log(resp);
+			if (resp.name && resp.name == "RequestError") {
+				top.layer.alert("网络异常！");
+				return;
+			}
+			$(input).attr("value", Config.oss_img_url + resp.name);
+			//$("#workImgSrc").val(Config.oss_img_url + resp.name);
+			layer.close(ind);
+		})
+}		
 		
 		
 		

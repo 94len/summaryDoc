@@ -24,7 +24,7 @@ https://www.infoq.cn/article/how-to-encrypt-the-user-password-correctly/
 
 
 【简化版】
-前端页面自己通过hash函数加密密码，
+客户端页面自己通过hash函数加密密码（用户名（或邮箱）加上网站特有的字符串（如域名）作为客户端的盐值），
 加密后密文传输给后台，使用bcrypt加密（使用bcrypt内部实现的加盐加密方式），最后加密后的密文存库。
 
 

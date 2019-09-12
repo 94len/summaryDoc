@@ -11,10 +11,16 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 	2) 日期格式化:：LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a"))
 	3) 获取时间戳：Instant.now()
 		（Date.from(Instant) 将Instant转换成java.util.Date，Date.toInstant()则是将Date类转换成Instant类。）
-	4) LocalDateTime转String: LocalDateTime.parse(str,dateTimeFormatter); String转LocalDateTime: localDateTime.format(dateTimeFormatter);
+	4) LocalDateTime转String: LocalDateTime.parse(str,dateTimeFormatter); 
+		String转LocalDateTime: localDateTime.format(dateTimeFormatter);
 	5) Date转LocalDateTime：LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
 	6) LocalDateTime转Date：Date date = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())
 	7) 前端传过来的日期字符串怎么转换并放到数据库
+	8）两个日期之间包含多少天，多少个月：
+		LocalDate java8Release = LocalDate.of(2014, Month.MARCH, 14); 
+		Period periodToNextJavaRelease = 
+		Period.between(today, java8Release); 
+		System.out.println("Months left between today and Java 8 release : " + periodToNextJavaRelease.getMonths() );
 	
 	1)
 		LocalDate localDate = LocalDate.now();

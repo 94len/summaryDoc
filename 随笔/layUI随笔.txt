@@ -116,8 +116,8 @@ $(function (){
         	if(data && data.res){
         		layui.use(['layer', 'form'], function () {
         			var form = layui.form;
-        			var html1 = '<dd lay-value="" class="layui-select-tips layui-this">请选择会员卡类型</dd>';
-                    var html2 = '<option value="" >请选择会员卡类型</option>';
+        			var html1 = '<dd lay-value="" class="layui-select-tips layui-this">请选择卡类型</dd>';
+                    var html2 = '<option value="" >请选择卡类型</option>';
                     for (var i = 0; i < data.res.length; i++) {
                         html1 += '<dd lay-value="' + data.res[i].id + '">' + data.res[i].card_type + '</dd>';
                         html2 += '<option value="' + data.res[i].id + '">' + data.res[i].card_type + '</option>';
@@ -149,9 +149,9 @@ layui.use('form', function(){
 解决：
 	【html】
 	<select lay-filter="retailLevel">
-	        <option value="" selected>请设置代理级别</option>
-	        <option value="1">一级分销代理</option>
-	        <option value="2">二级分销代理</option>
+	        <option value="" selected>请设置级别</option>
+	        <option value="1">一级</option>
+	        <option value="2">二级</option>
 	      </select>
 	【js】
 	layui.use('form', function(){

@@ -11,7 +11,7 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 	2) 日期格式化:：LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a"))
 	3) 获取时间戳：Instant.now()
 		（Date.from(Instant) 将Instant转换成java.util.Date，Date.toInstant()则是将Date类转换成Instant类。）
-	4) LocalDateTime转String: LocalDateTime.parse(str,dateTimeFormatter); 
+	4) LocalDateTime转String: LocalDateTime.parse(str,DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a")); 
 		String转LocalDateTime: localDateTime.format(dateTimeFormatter);
 	5) Date转LocalDateTime：LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
 	6) LocalDateTime转Date：Date date = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())
@@ -60,5 +60,21 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
             System.out.println(" Sorry, today is not your birthday");
         }
 		
-		
-	
+ java8时间类大型踩坑现场 ########################################################################################################################	
+public class Java8Time {
+
+    public static void main(String[] args) {
+        localDateTime();
+    }
+
+    public static void localDateTime(){
+        String dateStr = "2019-10-30 11:00:00";
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter dtf2 = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss");
+
+		// 这里用dtf正常，用dtf2报错：java.time.format.DateTimeParseException: Text '2019-10-30 11:00:00' could not be parsed: Unable to obtain LocalDateTime from TemporalAccessor: {MinuteOfHour=0, MilliOfSecond=0, NanoOfSecond=0, HourOfAmPm=11, SecondOfMinute=0, MicroOfSecond=0},ISO resolved to 2019-10-30 of type java.time.format.Parsed
+        LocalDateTime localDateTime = LocalDateTime.parse(dateStr, dtf2);
+        System.out.println(localDateTime);
+    }
+
+}

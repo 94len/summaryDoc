@@ -11,8 +11,15 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 	2) 日期格式化:：LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a"))
 	3) 获取时间戳：Instant.now()
 		（Date.from(Instant) 将Instant转换成java.util.Date，Date.toInstant()则是将Date类转换成Instant类。）
-	4) LocalDateTime转String: LocalDateTime.parse(str,DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a")); 
-		String转LocalDateTime: localDateTime.format(dateTimeFormatter);
+		//获取秒数
+		Long second = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
+		//获取毫秒数
+		Long milliSecond = LocalDateTime.now().toInstant(ZoneOffset.of("+8")).toEpochMilli();
+		
+		
+		
+	4) String转LocalDateTime: LocalDateTime.parse(str,DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a")); 
+		LocalDateTime转String: localDateTime.format(dateTimeFormatter);
 	5) Date转LocalDateTime：LocalDateTime localDateTime = LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
 	6) LocalDateTime转Date：Date date = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant())
 	7) 前端传过来的日期字符串怎么转换并放到数据库
@@ -61,6 +68,10 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
         }
 		
  java8时间类大型踩坑现场 ########################################################################################################################	
+ 
+ ⭐⭐⭐ LocalDateTime比较只有三个方法，isAfter，isBefore，isEqual，如果要取大于等于，直接使用“ !now.isBefore(otherDay) ”即可
+ 
+ 
 public class Java8Time {
 
     public static void main(String[] args) {

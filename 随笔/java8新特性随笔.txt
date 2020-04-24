@@ -8,6 +8,7 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
 
 1、日期类和时间类
 	1) 获取当前时间：LocalDateTime.now()；
+		根据数据创建时间日期对象：LocalDateTime now = LocalDateTime.of(2020,01,01,00,01,01,001);
 	2) 日期格式化:：LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss a"))
 	3) 获取时间戳：Instant.now()
 		（Date.from(Instant) 将Instant转换成java.util.Date，Date.toInstant()则是将Date类转换成Instant类。）
@@ -42,6 +43,7 @@ ZonedDateTime：最完整的日期时间，包含时区和相对UTC或格林威�
         LocalTime localTime = LocalTime.now();
         System.out.println("当前时间LocalTime.now(): " + localTime);
         System.out.println("当前时间+1小时 localTime.plusHours(1): " + localTime.plusHours(1));
+        System.out.println("当前时间-1小时 localTime.plusHours(-1): " + localTime.plusHours(-1));
 
         Clock clock = Clock.systemUTC();
         Clock clock2 = Clock.systemDefaultZone();

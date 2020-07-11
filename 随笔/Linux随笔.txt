@@ -1,0 +1,10 @@
+日志查看：tail -f 200 common.log
+
+日志搜索：
+	cat 文件地址|grep '搜索内容'
+	less -N 日志文件名.log  然后输入 /context  （context为搜索内容） N 可以查看上一个，n可以查看下一个  q退出
+	
+
+系统内存CPU等使用情况：https://www.cnblogs.com/mengchunchen/p/9669704.html
+	top		P - 以 CPU 占用率大小的顺序排列进程列表 （第三部分后述）
+			M - 以内存占用率大小的顺序排列进程列表 （第三部分后述）

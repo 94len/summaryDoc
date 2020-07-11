@@ -8,6 +8,10 @@ logger.debug(“Set {1,2} differs from {}”, “3”); //output:Set {1,2} diffe
 logger.debug(“Set {1,2} differs from {{}}”, “3”); //output:Set {1,2} differs from {3}
 
 
+**mysql***********************************************************************************************
+ALTER TABLE erp_express_log ADD COLUMN sign_status int(1) DEFAULT '0' COMMENT '签收状态：0-未签收，1-已签收' AFTER delivery_item_id;
+
+
 **IDEA快捷键***********************************************************************************************
 ctrl+T	打开实现类或者实现方法，焦点放到类或者方法上，按ctrl+t
 ctrl+tab	切换不同的文件窗口
